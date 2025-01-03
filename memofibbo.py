@@ -12,6 +12,3 @@ if (n<=0):
     print("Invalid number")
 else:
     print(f"number is  {memofibo(n)}\n")
-
-
-
