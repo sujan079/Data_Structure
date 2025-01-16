@@ -1,73 +1,58 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-void partition(int A[], int, int);
 
-void quicksort(int A[], int l, int r)
+// Function to perform quick sort
+void quicksort(int a[], int n)
 {
-    if (l < r)
+    int i, j, temp, pivot;
+
+    if (n < 2)
+        return;
+
+    pivot = a[n / 2];
+
+    for (i = 0, j = n - 1;; i++, j--)
     {
-        int p = partition(A[], l, r);
-        QuickSort(A[], l, p - 1);
-        QuickSort(A[], p + 1, r);
+        while (a[i] < pivot)
+            i++;
+        while (a[j] > pivot)
+            j--;
+
+        if (i >= j)
+            break;
+
+        temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
-}
-void partition(A[], l, r)
-{
+
+    quicksort(a, i);
+    quicksort(a + i, n - i);
+    
 }
 
-void display(int A[], int n)
+// Function to print the aay
+void display(int a[], int n)
 {
     int i;
-    if (n > 20) // If array size is large, display first and last 10 elements
+    for (i = 0; i < n; i++)
     {
-        printf("[ ");
-        for (i = 0; i < 10; i++)
-            printf("%d ", A[i]);
-        printf("... ");
-        for (i = n - 10; i < n; i++)
-            printf("%d ", A[i]);
-        printf("]\n");
+        printf("%d ", a[i]);
     }
-    else // Display full array for smaller inputs
-    {
-        for (i = 0; i < n; i++)
-            printf("%d ", A[i]);
-        printf("\n");
-    }
+    printf("\n");
 }
 
 int main()
 {
-    int A[100000], n, i;
-    clock_t start, end;
-    double time_taken;
+    int a[] = {12, 11, 13, 5, 6};
+    int n = sizeof(a) / sizeof(a[0]);
 
-    printf("Enter n (1-100000): ");
-    scanf("%d", &n);
+    printf("Original aay: ");
+    display(a, n);
 
-    if (n <= 0 || n > 100000)
-    {
-        printf("Invalid input for n. Please enter a value between 1 and 100000.\n");
-        return 1;
-    }
+    quicksort(a, n);
 
-    srand(time(0)); // Initialize random seed
-    for (i = 0; i < n; i++)
-        A[i] = rand() % 10000; // Limit random values for readability
-
-    // printf("Unsorted array:\n");
-    // display(A, n);
-
-    start = clock();
-    insertionSort(A, n);
-    end = clock();
-
-    // printf("Sorted array:\n");
-    // display(A, n);
-
-    time_taken = (double)(end - start) / CLOCKS_PER_SEC;
-    printf("The time taken is %f seconds\n", time_taken);
+    printf("Sorted aay: ");
+    display(a, n);
 
     return 0;
 }

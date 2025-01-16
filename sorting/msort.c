@@ -71,7 +71,7 @@ int main()
     clock_t start, end;
     double diff;
 
-    printf("Enter n: ");
+    printf("Enter n: ");p
     scanf("%d", &n);
 
     for (int i = 0; i < n; i++) {
