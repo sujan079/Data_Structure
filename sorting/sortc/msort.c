@@ -19,7 +19,7 @@ void merge(int A[], int l, int m, int r)
 
     // Merge the temporary arrays back into A[l..r]
     int i = 0, j = 0, k = l;
-    while (i < n1 && j < n2) {
+    while (i < n1 && j < n2) { 
         if (L[i] <= R[j]) {
             A[k] = L[i];
             i++;
@@ -48,7 +48,7 @@ void merge(int A[], int l, int m, int r)
 void mergeSort(int A[], int l, int r)
 {
     if (l < r) {
-        int m = l + (r - l) / 2;
+        int m = l + (r - l) / 2;//
 
        
         mergeSort(A, l, m);

@@ -43,7 +43,7 @@ void display(int a[], int n)
 
 int main()
 {
-    int a[] = {12, 11, 13, 5, 6};
+    int a[10000];
     int n = sizeof(a) / sizeof(a[0]);
 
     printf("Original aay: ");
@@ -53,6 +53,5 @@ int main()
 
     printf("Sorted aay: ");
     display(a, n);
-
     return 0;
 }
