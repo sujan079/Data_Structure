@@ -26,12 +26,14 @@ int main()
 	int element;
 	q.front = 0;
 	q.rear = 0;
-	while (1)
+	int i=5;
+	while (i!=0)
 	{
 
 		printf("Enter the element that you want to add to the queue:");
 		scanf("%d", &element);
 		enqueue(&q, element);
+		i=i-1;
 	}
 
 	return 0;
